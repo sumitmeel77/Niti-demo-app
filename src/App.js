@@ -17,7 +17,7 @@ export default function App() {
     { title: 'Item 11', image: 'https://picsum.photos/id/231/200/300' },
   ];
 
-  const pageSize = 3;
+  const pageSize = 5;
   // const [carouselData, setCarouselData] = useState([]);
   // const pageSize = 3;
 

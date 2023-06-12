@@ -18,11 +18,17 @@ const Carousel = ({ data, pageSize }) => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
+    if (currentPage == 0) {
+      setCurrentPage(totalPages - 1);
+    }
   };
 
   const handleNextClick = () => {
     if (currentPage < totalPages - 1) {
       setCurrentPage(currentPage + 1);
+    }
+    if (currentPage == totalPages - 1) {
+      setCurrentPage(0);
     }
   };
 
@@ -36,12 +42,16 @@ const Carousel = ({ data, pageSize }) => {
         {itemsToShow.map((item, index) => (
           <div className="carousel-item" key={index}>
             <img src={item.image} alt={item.title} />
-            <h3>{item.title}</h3>
+            <div className="overlay">
+              {' '}
+              {/* Added the class name overlay */}
+              <h3>{item.title}</h3>
+            </div>
           </div>
         ))}
       </div>
       <div className="pagination">
-        <div className="arrow" onClick={handlePrevClick}>
+        <div className="prev-button arrow" onClick={handlePrevClick}>
           <FontAwesomeIcon icon={faChevronLeft} />
         </div>
         <div className="dots-container">
@@ -53,7 +63,7 @@ const Carousel = ({ data, pageSize }) => {
             ></div>
           ))}
         </div>
-        <div className="arrow" onClick={handleNextClick}>
+        <div className="next-button arrow" onClick={handleNextClick}>
           <FontAwesomeIcon icon={faChevronRight} />
         </div>
       </div>
